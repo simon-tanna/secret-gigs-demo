@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%# <a class="nav-link active" aria-current="page" href="#">Home</a> %>
+          <%= link_to "Home", gigs_path, class: "nav-link active" %>
+        </li>
+        <%# this is setting what the navbar will show if the user is signed in or out %>
+        <% if !user_signed_in? %>
+          <li class="nav-item">
+            <%# <a class="nav-link active" aria-current="page" href="#">Sign In</a> %>
+            <%= link_to "Sign In", new_user_session_path, class: "nav-link active" %>
+          </li>
+          <li class="nav-item">
+            <%# <a class="nav-link active" aria-current="page" href="#">Sign Up</a> %>
+            <%= link_to "Sign Up", new_user_registration_path, class: "nav-link active" %>
+          </li>
+        <% else %>
+          <% if current_user.organizer? %>
+            <li class="nav-item">
+              <%= link_to 'New Gig', new_gig_path, class: "nav-link active" %>
+            </li>
+          <% end %>
+          <li class="nav-item">
+            <%# <a class="nav-link active" aria-current="page" href="#">Sign Out</a> %>
+            <%= link_to "Sign Out", destroy_user_session_path, method: 'delete', class: "nav-link active" %>
+         </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
