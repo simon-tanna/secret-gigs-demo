@@ -41,7 +41,17 @@
     <%# <%= form.text_field :user_id %>
   <%# </div> %>
     <%= form.hidden_field :user_id, value: current_user.id %>
-
+  Address: <br>
+  <%= form.fields_for :address do |a_form| %>
+    <%= a_form.label :street %>
+    <%= a_form.text_field :street %>
+    <%= a_form.label :suburb %>
+    <%= a_form.text_field :suburb %>
+    <%= a_form.label :postcode %>
+    <%= a_form.text_field :postcode %>
+    <%= a_form.label :state %>
+    <%= a_form.text_field :state %>
+  <% end %>
   <div class="actions">
     <%= form.submit %>
   </div>

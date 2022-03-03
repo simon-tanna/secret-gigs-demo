@@ -16,6 +16,9 @@ class GigsController < ApplicationController
   # GET /gigs/new
   def new
     @gig = Gig.new
+    # address = Address.new
+    # @gig.address = address
+    @gig.address = Address.new
   end
 
   # GET /gigs/1/edit
@@ -69,7 +72,7 @@ class GigsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def gig_params
-      params.require(:gig).permit(:name, :date, :area, :tickets, :price, :user_id)
+      params.require(:gig).permit(:name, :date, :area, :tickets, :price, :user_id, address_attributes: [:street, :suburb, :postcode, :state])
     end
 
     # check if the user is an organizer before creating a new gig

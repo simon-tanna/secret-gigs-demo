@@ -30,6 +30,16 @@
   <%= @gig.user.username %>
 </p>
 
+<%# <p>
+  <strong>Address:</strong>
+  <%= "#{@gig.address.street} #{@gig.address.postcode} #{@gig.address.state}" %>
+<%# </p> %>
+
+<p>
+  <strong>Address:</strong>
+  <%= @gig.address.full_address %>
+</p>
+
 <% if user_signed_in? and (current_user.admin? or current_user==@gig.user) %>
   <%= link_to 'Edit', edit_gig_path(@gig) %>
   <%= link_to 'Destroy', @gig , method: :delete, data: { confirm: 'Are you sure?' } %>
